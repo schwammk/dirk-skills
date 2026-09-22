@@ -1,0 +1,3 @@
+interface:
+  display_name: "Pattern Decision"
+  short_description: "Enumerate catalog patterns for architectural decisions"
