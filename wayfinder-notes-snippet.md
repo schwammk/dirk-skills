@@ -18,5 +18,7 @@ as a standing preference. Keep the domain line project-specific.
 - Implementation tickets reference decisions as pointers (per ADR-NNNN, Outbox
   + relay); they do not re-argue decisions.
 - Code review of pattern-referencing tickets calls the Skill tool with
-  "pattern-review" (conformance against the ADR's contract).
+  "pattern-review" (conformance against the ADR's contract). When a mechanism
+  looks like it is re-deriving a known solution (retry loops, hand-rolled
+  queues, delegation chains), "pattern-review" (retrieval) applies too.
 ```

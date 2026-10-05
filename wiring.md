@@ -11,7 +11,11 @@ tool with" — it is the phrasing most likely to actually fire the invocation.
   or wayfinder decision ticket, call the Skill tool with "pattern-decision"
   before recording the ADR.
 - When reviewing or implementing code governed by a pattern-named ADR, call the
-  Skill tool with "pattern-review".
+  Skill tool with "pattern-review" (conformance against the ADR's contract).
+- When a mechanism looks like it is re-deriving a known solution (retry loops,
+  hand-rolled queues, delegation chains, registry lookups), call the Skill tool
+  with "pattern-review" (retrieval) and adopt the known form knowingly or
+  simplify it away.
 - Pattern vocabulary belongs in ADRs and ticket pointers, never in the domain
   glossary (CONTEXT.md).
 ```
