@@ -12,6 +12,20 @@ modify his files — his suite stays stock and auto-updatable.
 
 ## Skills
 
+### enforcing-quality-gates (model-invoked)
+
+CRAP and DRY gates that must run and pass before a branch is judged ready for
+structural review. Verdict comes from the tools
+([crap4ts](https://github.com/schwammk/crap4ts),
+[dry4ts](https://github.com/schwammk/dry4ts)), never from the agent. Step 1 is
+the boundary carve-out from the SwarmForge engineering constitution: modules
+touching GUIs, external devices, environment/system errors, or blocking
+operations are excluded from every quality tool and kept as minimal adapter
+shells — without it, gate budget is wasted extracting functions from
+`main.ts`-shaped adapter code. Complements `pattern-review` and hands off to
+the code-review flow (Matt's `code-review`, with `pas-code-review` as the
+platform overlay in PAS repos).
+
 ### pattern-decision (model-invoked)
 
 Brings catalog patterns into architectural decisions as a candidate checklist:
@@ -50,9 +64,11 @@ push this repo to GitHub and add from there.
 
 ## Wiring
 
-Two instruction lines in your global `CLAUDE.md` / `AGENTS.md` (see
-`wiring.md`), plus a standing preference pasted into each wayfinder map's
-Notes block (`wayfinder-notes-snippet.md`). No forks of mattpocock/skills.
+Instruction stanzas in your global `CLAUDE.md` / `AGENTS.md` (see
+`wiring.md` — pattern discipline, quality gates, and the PAS
+Matt-spine/pas-overlay precedence), plus a standing preference pasted into each
+wayfinder map's Notes block (`wayfinder-notes-snippet.md`). No forks of
+mattpocock/skills.
 
 Escalation path if soft wiring proves unreliable: patch
 `domain-modeling/ADR-FORMAT.md` in an npx-owned install of mattpocock/skills
