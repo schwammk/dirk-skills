@@ -26,6 +26,20 @@ shells — without it, gate budget is wasted extracting functions from
 the code-review flow (Matt's `code-review`, with `pas-code-review` as the
 platform overlay in PAS repos).
 
+### arch-cycles (model-invoked)
+
+Informational import-cycle data for TypeScript repos, from
+[arch4ts](https://github.com/schwammk/arch4ts) `dump`. Fires when running
+`improve-codebase-architecture`; its output goes to the exploring sub-agent as
+extra evidence about leakage across seams. Not a gate, no score. The script
+needs `jq` and finds arch4ts via `ARCH4TS_BIN`, `PATH`, or a sibling checkout.
+
+### pas-specupdate (model-invoked)
+
+Aligns a code-adjacent `SPEC.md` with the code after the fact, on request
+(`/pas-specupdate`). Baseline is the last commit touching that SPEC.md. Only
+the SPEC.md changes.
+
 ### pattern-decision (model-invoked)
 
 Brings catalog patterns into architectural decisions as a candidate checklist:

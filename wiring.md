@@ -47,10 +47,24 @@ tool with" — it is the phrasing most likely to actually fire the invocation.
   skills are platform overlays, not rival flows; they are written assuming no
   other skills exist, so where they claim all territory, methodology follows
   Matt's flow and platform specifics follow pas-*.
-- When the pas-generate-code SPEC.md gate applies, produce the SPEC.md via
-  "pas-generate-specification" from the agreed spec before code edits — the
-  tracker spec and the code-adjacent SPEC.md are two renderings of the same
-  synthesized content.
+- "pas-spec-driven-development" is not the workflow in these repos. Its approval
+  phases and the "STOP — spec-driven gate" in the pas-generate-* skills do not
+  apply: never block code on an approved SPEC.md and never make "create
+  SPEC.md" the first plan step. Still read the relevant pas-generate-* code
+  rules and `.agents/*-rules.md` before writing code. The spec a change is
+  judged against is the tracker spec or ticket.
+- A code-adjacent SPEC.md per domain is one document of what the service or app
+  must do, aligned with the code. It is updated after the fact, on request
+  (`/pas-specupdate`, or "update SPEC.md to align with what changed since the
+  last update") — call the Skill tool with "pas-specupdate".
 - Consult "pas-code-review" as the platform-specific checklist overlay to
-  Matt's code-review, not instead of it.
+  Matt's code-review, not instead of it. A missing or stale SPEC.md is a note,
+  not a Blocker.
+
+## Architecture review (TypeScript repos)
+
+- When running "improve-codebase-architecture", call the Skill tool with
+  "arch-cycles" and give its output to the exploring sub-agent. Cycles are
+  additional information about leakage across seams: no gate, no score, no
+  extra report section.
 ```
