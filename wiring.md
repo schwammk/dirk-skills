@@ -4,6 +4,16 @@ Paste into your global `~/.claude/CLAUDE.md` (Claude Code) and global opencode
 rules file (`~/.config/opencode/AGENTS.md`). Keep the phrasing "call the Skill
 tool with" — it is the phrasing most likely to actually fire the invocation.
 
+**opencode 2 reads `AGENTS.md` only** — it does not fall back to `CLAUDE.md`
+(opencode 1 did). To keep one source of truth, symlink instead of pasting twice:
+
+```sh
+ln -s ~/.claude/CLAUDE.md ~/.config/opencode/AGENTS.md
+```
+
+opencode 1 prefers `AGENTS.md` over its `CLAUDE.md` fallback, so it will not
+load the content twice.
+
 ```md
 ## Pattern-language discipline
 
@@ -67,4 +77,8 @@ tool with" — it is the phrasing most likely to actually fire the invocation.
   "arch-cycles" and give its output to the exploring sub-agent. Cycles are
   additional information about leakage across seams: no gate, no score, no
   extra report section.
+- When writing the HTML report of "improve-codebase-architecture", call the
+  Skill tool with "arch-report-mermaid" and run its validator on the report
+  before opening it. A bad diagram only shows "Syntax error in text" in the
+  browser.
 ```

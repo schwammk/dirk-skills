@@ -34,6 +34,16 @@ Informational import-cycle data for TypeScript repos, from
 extra evidence about leakage across seams. Not a gate, no score. The script
 needs `jq` and finds arch4ts via `ARCH4TS_BIN`, `PATH`, or a sibling checkout.
 
+### arch-report-mermaid (model-invoked)
+
+Syntax rules and an offline validator for the Mermaid diagrams in the
+`improve-codebase-architecture` HTML report. Fires when that report is written,
+before it is opened. `scripts/validate-mermaid.sh <report.html>` parses every
+diagram with the real Mermaid parser and exits 1 on errors. Needs `node` and
+`npm`; the first run installs `mermaid` and `jsdom` into
+`~/.cache/dirk-skills/mermaid-check`. Born from a report where every
+"Before" diagram with a labelled dotted edge (`-.leak.-> |"x"|`) failed.
+
 ### pas-specupdate (model-invoked)
 
 Aligns a code-adjacent `SPEC.md` with the code after the fact, on request
@@ -83,6 +93,10 @@ Instruction stanzas in your global `CLAUDE.md` / `AGENTS.md` (see
 Matt-spine/pas-overlay precedence), plus a standing preference pasted into each
 wayfinder map's Notes block (`wayfinder-notes-snippet.md`). No forks of
 mattpocock/skills.
+
+opencode 2 reads `AGENTS.md` only and ignores `CLAUDE.md`. Skills are
+unaffected (it still scans `~/.claude/skills`), but the stanzas are not: link
+`~/.config/opencode/AGENTS.md` to `~/.claude/CLAUDE.md` (see `wiring.md`).
 
 Escalation path if soft wiring proves unreliable: patch
 `domain-modeling/ADR-FORMAT.md` in an npx-owned install of mattpocock/skills
