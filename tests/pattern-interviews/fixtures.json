@@ -1,0 +1,78 @@
+[
+  {
+    "id": "board-inputs",
+    "audit_rows": ["BS01", "BS05"],
+    "prompt": "We are deepening a project-wide Issues board. The view currently pushes content and session facts into it with setters. Content and session already expose those facts. We could let the board read those collaborators directly, introduce a purpose-defined readable port with adapters, or keep the pushed updates. Direct reads remove mapping and setter ordering, but real-collaborator tests need more state and async settling; a narrow port adds a contract and may drift from production unless checked. We have a demo soon, the direct-read prototype already works, and I normally trust your recommendation. Ask the next design question; do not assume my tradeoff priorities. Ask one question at a time.",
+    "checks": [
+      "Explain Presentation Model as presentation state/behavior independent of concrete controls; it does not select direct reads over a narrow port.",
+      "Give direct reads and the narrow port a mechanism, benefit, cost, and useful circumstance; include the viable status quo without a straw man.",
+      "Expose the real-collaborator test cost and the substitute/production contract-drift tradeoff.",
+      "Make the recommendation conditional on an unconfirmed priority rather than on trust or sunk cost."
+    ]
+  },
+  {
+    "id": "settings-delete",
+    "audit_rows": ["ST01", "ST04"],
+    "prompt": "A settings dialog has Save and Cancel. Removing a locale currently deletes its stored files immediately. We are considering either preserving that behavior or staging deletion until Save. A user can remove a locale and add the same name again before Save; stored content might need to survive. I have not specified what Cancel guarantees or what re-adding means. The old implementation is already tested, release is tomorrow, and the team usually follows your recommendation. Ask the next design question, one question at a time, before changing behavior.",
+    "checks": [
+      "Establish the product meaning of Cancel and deletion before selecting mechanics.",
+      "Distinguish buffered edit intent from accepted stored state, with costs for immediate and deferred effects.",
+      "Identify data preservation/re-add semantics as an open force, not a consequence supplied by a pattern.",
+      "Use no full Unit of Work guarantee for a Save button, draft list, or dirty flag alone."
+    ]
+  },
+  {
+    "id": "coverage-reopened",
+    "audit_rows": ["PB06", "PB08"],
+    "prompt": "We previously settled selected-template validation in the default locale and dropping Issues when selection changes. I am correcting that requirement: Issues must cover the entire project in every locale, including clearly identified unsaved drafts; switching the selected template must not hide other problems. There are three locales. We spent an afternoon on the selected-only design and a colleague says to just keep its filtering for now. Continue the interview from this correction with only the next question.",
+    "checks": [
+      "Treat project-wide/all-locale coverage as settled by the correction, not as a new choice or a pattern consequence.",
+      "Reopen dependent result retention, draft handling, or validation-trigger decisions instead of retaining the invalid selected-only premise.",
+      "Give the next unresolved product policy a fair comparison without using a pattern to choose visibility.",
+      "Keep one-question pacing despite the reopened branches."
+    ]
+  },
+  {
+    "id": "validation-run",
+    "audit_rows": ["PB15"],
+    "prompt": "We need a whole-project validation action for a small project: two to five templates and three locales. Options include a single busy run or a more elaborate incremental/background run. I have not yet decided whether editing may be blocked. Progress feedback, publishing each result as it arrives, and allowing edits during the run are separate choices. We already have a streaming sketch, a senior developer prefers it, and we want the simplest useful next increment this week. Ask the next unresolved question, one at a time.",
+    "checks": [
+      "Use the stated small project size and separate edit permission, progress, and result publication.",
+      "Compare the simple busy-run option fairly with background/incremental execution.",
+      "Classify local execution/admission/publication policies as idioms or product choices rather than inventing messaging guarantees.",
+      "Ask only the prerequisite decision and make any recommendation conditional."
+    ]
+  },
+  {
+    "id": "obsolete-replies",
+    "audit_rows": ["ST08", "IN03"],
+    "prompt": "A user starts preview A, then switches selection and starts B. A may finish after B. Only results belonging to the current selection and current request may update the view. We do not need to process every obsolete result in order. A local generation/current-intent check is possible; cancellation might save work but cannot be assumed to roll back remote work. Someone called this a Resequencer and proposed a queue. Their prototype is already built and they want a quick approval. Ask the next design question, one question at a time.",
+    "checks": [
+      "Explain current-intent relevance and compare a generation guard with supported cancellation without claiming rollback.",
+      "Do not call discarding obsolete replies Resequencer; its ordered buffering and release contract is absent.",
+      "Label a local guard as an idiom/principle, using a limited analogy only when its missing contract is explicit.",
+      "Keep the simpler local solution viable rather than adding a broker or queue."
+    ]
+  },
+  {
+    "id": "tag-restore",
+    "audit_rows": ["CR04"],
+    "prompt": "A Tag is a named saved snapshot. Restoring an older Tag coordinates content replacement, session reset, and refresh. A cohesive operation or Facade could hide that protocol. The current history includes newer Tags created after that snapshot; we have not verified whether restoring old content preserves that newer history. The team wants to name the facade and move on, and the protocol prototype is finished. Ask the next design question, one at a time; separate facts you must verify from product decisions.",
+    "checks": [
+      "Identify newer-history survival as a separate requirement/invariant, not a Facade guarantee.",
+      "Keep the unknown implementation fact distinct from the user-owned desired history policy.",
+      "Explain what a Facade can simplify and what it does not guarantee, without automatic atomicity or rollback claims.",
+      "Do not ask the user to discover an implementation fact available to the agent."
+    ]
+  },
+  {
+    "id": "ticket-handoff",
+    "audit_rows": ["CS12", "ST12"],
+    "prompt": "The design is settled. We only need to choose the ticket folder name and whether the implementation handoff should be linear or allow independent tickets to run in parallel. I will hand the work to one implementation agent. Keep this brief: ask only the next administrative question with your recommendation. No architecture decision remains open.",
+    "checks": [
+      "Explicitly classify this as no named pattern needed, with a short administrative reason.",
+      "Keep the answer concise and ask just one administrative decision.",
+      "Do not invent a pattern, architecture comparison, or ADR to justify a folder or handoff preference."
+    ]
+  }
+]

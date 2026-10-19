@@ -1,0 +1,3 @@
+interface:
+  display_name: "Arch Cycles"
+  short_description: "Informational import-cycle data from arch4ts"

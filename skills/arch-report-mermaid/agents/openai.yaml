@@ -1,0 +1,3 @@
+interface:
+  display_name: "Arch Report Mermaid"
+  short_description: "Validate Mermaid diagrams in generated HTML reports"

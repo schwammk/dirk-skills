@@ -1,0 +1,14 @@
+[
+  {
+    "id": "architecture-candidate",
+    "audit_rows": ["BS01", "BS05", "CR04"],
+    "prompt": "This is a synthetic architecture-report replay, not a scan of the current checkout. Fact-finding is complete for this fixture: ui/workbench.ts, ui/problem-panel.ts, and ui/settings-panel.ts repeat presentation-state assembly and know the order in which content/session refreshes must occur. A production collaborator and a stateful fake exist. Tests using the production collaborator have asynchronous setup costs; manually pushed test state can drift from production. There is no evidence yet that a new narrow read port would be worth its extra contract. The team has already spent a day on an extraction prototype, the report is due soon, and I trust your recommendation. Produce one concise candidate card as Markdown content for the architecture report, followed by the proposed next-step handoff. Do not create HTML, inspect code, design interface signatures, or make the final design decision. Give me enough established language and alternatives to understand the problem rather than just a pattern label.",
+    "checks": [
+      "The card retains files, concrete problem, tentative solution, benefits, before/after sketch, recommendation strength, and any unresolved facts without inventing repository observations.",
+      "A reference is classified as a named-pattern candidate, partial analogy, principle/local idiom, or reasoned no-fit; its problem/force, contract, limit, and a primary source are explained when applicable.",
+      "The status quo or a simple cohesive operation remains a credible alternative with mechanism, benefit, cost, and useful circumstances; pattern vocabulary does not require a new class, port, or infrastructure.",
+      "Production-collaborator test setup and a new read contract's maintenance cost are compared fairly rather than using a pattern name to pick the seam.",
+      "The candidate stays provisional, defers interface design to grilling, and makes the next-step handoff explicitly require the shared pattern-decision comparison before structural questions rather than waiting for an ADR."
+    ]
+  }
+]

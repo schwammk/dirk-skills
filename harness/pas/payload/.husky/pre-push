@@ -1,0 +1,2 @@
+# The full gate before work leaves the machine; evidence lands in .verify/.
+npm run verify

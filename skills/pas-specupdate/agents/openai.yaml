@@ -1,0 +1,3 @@
+interface:
+  display_name: "PAS Spec Update"
+  short_description: "Align a code-adjacent SPEC.md with the code after the fact"
