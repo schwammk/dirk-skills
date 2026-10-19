@@ -2,15 +2,12 @@
 # Informational only: prints import cycles of the TypeScript code in the current repo.
 # Always exits 0. Never leaves files behind in the repo.
 set -u
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 ROOT="$(git rev-parse --show-toplevel 2>/dev/null || pwd)"
 OUT="${TMPDIR:-/tmp}/arch-cycles-$$.json"
 
-# Locate arch4ts: ARCH4TS_BIN, PATH, or a sibling checkout of the dirk-skills repo.
+# Locate arch4ts only through an explicit executable path or PATH.
 BIN="${ARCH4TS_BIN:-}"
 if [ -z "$BIN" ] && command -v arch4ts >/dev/null 2>&1; then BIN="arch4ts"; fi
-SIBLING="$SCRIPT_DIR/../../../../arch4ts/dist/cli.js"
-if [ -z "$BIN" ] && [ -f "$SIBLING" ]; then BIN="node $(cd "$(dirname "$SIBLING")" && pwd)/cli.js"; fi
 if [ -z "$BIN" ]; then echo "arch-cycles: arch4ts not found (set ARCH4TS_BIN); skipping cycle data."; exit 0; fi
 command -v jq >/dev/null 2>&1 || { echo "arch-cycles: jq not found; skipping cycle data."; exit 0; }
 
@@ -35,7 +32,7 @@ else
   TMPCFG=1
 fi
 
-if ! $BIN dump . --out "$OUT" >/dev/null 2>&1; then echo "arch-cycles: arch4ts failed; skipping cycle data."; exit 0; fi
+if ! "$BIN" dump . --out "$OUT" >/dev/null 2>&1; then echo "arch-cycles: arch4ts failed; skipping cycle data."; exit 0; fi
 jq -r '"modules: \(.architecture.graph.nodes|length)  imports: \(.architecture.graph.edges|length)  cycles: \(.layering.cycles|length)  feedback edges: \(.layering.feedbackEdges|length)"' "$OUT"
 jq -r '.layering.cycles[] | "cycle: " + join(" -> ")' "$OUT"
 jq -r '.layering.feedbackEdges[] | "feedback edge: \(.from) -> \(.to) (line \(.lines|join(",")))"' "$OUT"

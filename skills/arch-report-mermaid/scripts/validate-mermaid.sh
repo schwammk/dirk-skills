@@ -4,15 +4,21 @@ set -euo pipefail
 
 if [ $# -ne 1 ]; then echo "usage: $0 <report.html>" >&2; exit 2; fi
 command -v node >/dev/null && command -v npm >/dev/null || { echo "skipping: node and npm are needed" >&2; exit 2; }
+node -e 'process.exit(Number(process.versions.node.split(".")[0]) >= 24 ? 0 : 1)' || { echo "setup: Node 24 or newer is needed" >&2; exit 2; }
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/dirk-skills/mermaid-check"
+[ -f "$1" ] || { echo "setup: report not found: $1" >&2; exit 2; }
+REPORT="$(cd "$(dirname "$1")" && pwd)/$(basename "$1")"
+[ -f "$SCRIPT_DIR/package-lock.json" ] || { echo "setup: the bundled package-lock.json is missing" >&2; exit 2; }
+LOCK_HASH="$(node -e 'process.stdout.write(require("node:crypto").createHash("sha256").update(require("node:fs").readFileSync(process.argv[1])).digest("hex"))' "$SCRIPT_DIR/package-lock.json")"
+CACHE="${XDG_CACHE_HOME:-$HOME/.cache}/dirk-skills/mermaid-check/$LOCK_HASH"
 mkdir -p "$CACHE"
 
-if [ ! -d "$CACHE/node_modules/mermaid" ] || [ ! -d "$CACHE/node_modules/jsdom" ]; then
-  (cd "$CACHE" && { [ -f package.json ] || echo '{"private":true,"type":"module"}' > package.json; } \
-    && npm install --silent mermaid@11 jsdom >&2) || { echo "skipping: npm install failed" >&2; exit 2; }
+if [ ! -f "$CACHE/.ready" ] || [ ! -d "$CACHE/node_modules/mermaid" ] || [ ! -d "$CACHE/node_modules/jsdom" ]; then
+  (cp "$SCRIPT_DIR/package.json" "$SCRIPT_DIR/package-lock.json" "$CACHE/" \
+    && npm ci --prefix "$CACHE" --ignore-scripts --no-audit --no-fund >&2 \
+    && touch "$CACHE/.ready") || { echo "setup: locked validator npm ci failed" >&2; exit 2; }
 fi
 
 cp "$SCRIPT_DIR/validate-mermaid.mjs" "$CACHE/validate-mermaid.mjs"
-(cd "$CACHE" && node validate-mermaid.mjs "$(cd "$(dirname "$1")" && pwd)/$(basename "$1")")
+(cd "$CACHE" && node validate-mermaid.mjs "$REPORT")

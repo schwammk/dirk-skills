@@ -17,17 +17,18 @@ load the content twice.
 ```md
 ## Pattern-language discipline
 
-- When resolving an architectural or integration decision in a grilling session
-  or wayfinder decision ticket, call the Skill tool with "pattern-decision"
-  before recording the ADR.
+- Before presenting structural alternatives in architecture scans, grilling,
+  wayfinder decisions, or module/state/testing design, call the Skill tool with
+  "pattern-decision" and follow its comparison contract. Revisit it when the
+  forces change. This happens before the first recommendation, not only at ADR time.
 - When reviewing or implementing code governed by a pattern-named ADR, call the
   Skill tool with "pattern-review" (conformance against the ADR's contract).
 - When a mechanism looks like it is re-deriving a known solution (retry loops,
   hand-rolled queues, delegation chains, registry lookups), call the Skill tool
   with "pattern-review" (retrieval) and adopt the known form knowingly or
   simplify it away.
-- Pattern vocabulary belongs in ADRs and ticket pointers, never in the domain
-  glossary (CONTEXT.md).
+- Keep pattern vocabulary in design comparisons, decision notes, ADRs, and ticket
+  pointers, not the domain glossary (GLOSSARY.md). A reasoned no-pattern result is valid.
 ```
 
 ## Quality gates stanza

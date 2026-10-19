@@ -14,11 +14,11 @@ The script ships in the `dirk-skills` repo. If it is not present under this skil
    - `~/Projects/schwammk/dirk-skills/scripts/link-skills.sh` re-links every skill, including `arch-cycles`, into `~/.claude/skills`; or
    - copy `~/Projects/schwammk/dirk-skills/skills/arch-cycles/scripts/arch-cycles.sh` into this skill's `scripts/` folder and `chmod +x` it.
 3. Make sure `jq` is installed (`command -v jq`).
-4. Make sure arch4ts is available (`command -v arch4ts`, or `ARCH4TS_BIN`, or a sibling `arch4ts` checkout). If not: `git clone git@github.com:schwammk/arch4ts.git ~/Projects/schwammk/arch4ts && cd ~/Projects/schwammk/arch4ts && npm install && npm run build && npm link`.
+4. Make sure arch4ts is available on PATH (`command -v arch4ts`), or set `ARCH4TS_BIN` to an executable path. A checkout in a neighboring directory is not a dependency source. If arch4ts is unavailable, report the skip and continue without cycle data.
 
 Tell the user what you installed. If a step fails (no network, no repo access), say so in one line and carry on without cycle data.
 
-Run `scripts/arch-cycles.sh` (relative to this skill's base directory) from inside the repo. It prints one summary line, then one line per cycle and per feedback edge. It always exits 0 and leaves no files in the repo.
+Run `bash scripts/arch-cycles.sh` (relative to this skill's base directory) from inside the repo. It prints one summary line, then one line per cycle and per feedback edge. It always exits 0 and leaves no files in the repo.
 
 ```
 modules: 150  imports: 321  cycles: 0  feedback edges: 0
@@ -37,4 +37,4 @@ feedback edge: src/c.ts -> src/a.ts (line 1)
 
 - arch4ts reads only `<root>/tsconfig.json`. If the repo has none, the script writes a temporary one that extends `tsconfig.base.json` (when present) and includes `packages/`, `apps/`, `libs/`, `src/` (whichever exist), then removes it. Without the aliases, cross-package imports are silently dropped.
 - Spec/test files are excluded. Dynamic `import()` is ignored and type-only imports count as ordinary imports. Only `.ts` and `.tsx` files are read.
-- arch4ts is found via `ARCH4TS_BIN`, then `arch4ts` on PATH, then a sibling `arch4ts` checkout next to the `dirk-skills` repo.
+- arch4ts is found via the executable path in `ARCH4TS_BIN`, then `arch4ts` on PATH. The helper does not search neighboring checkouts.

@@ -1,6 +1,6 @@
 ---
 name: enforcing-quality-gates
-description: Use when implementation tasks are complete on a branch, when a branch is ready for structural review or a PR is about to be opened or judged merge-ready, or when asked whether TypeScript code is "done", "ready to ship", or "ready for review". Discipline skill: CRAP and DRY gates must run and pass first.
+description: 'Use when implementation tasks are complete on a branch, when a branch is ready for structural review or a PR is about to be opened or judged merge-ready, or when asked whether TypeScript code is "done", "ready to ship", or "ready for review". Discipline skill: CRAP and DRY gates must run and pass first.'
 ---
 
 # Enforcing Quality Gates

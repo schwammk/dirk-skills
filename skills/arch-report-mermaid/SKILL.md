@@ -11,12 +11,14 @@ before telling the user to open the file.
 
 ## Validate (always, before `xdg-open`)
 
-Run `scripts/validate-mermaid.sh <report.html>` (relative to this skill's base
+Run `bash scripts/validate-mermaid.sh <report.html>` (relative to this skill's base
 directory). It parses every `<pre class="mermaid">` block with the real Mermaid
 parser and prints the block number and the error. Exit 0 = all diagrams parse,
-exit 1 = fix and run again. It needs `node` and `npm`. The first run installs
-`mermaid` and `jsdom` into `~/.cache/dirk-skills/mermaid-check`; later runs are
-offline. It does not render, so layout is still the user's to judge.
+exit 1 = fix and run again; exit 2 = setup failed, not a diagram verdict. It needs
+Node 24 or newer and npm. The first run uses the bundled lockfile to install
+Mermaid and jsdom into a lock-specific directory under
+`${XDG_CACHE_HOME:-$HOME/.cache}/dirk-skills/mermaid-check`; later runs are offline.
+It does not render, so layout is still the user's to judge.
 
 Say in one line which result you got. If the script cannot run (no node, no
 network on first use), say so and keep to the rules below.

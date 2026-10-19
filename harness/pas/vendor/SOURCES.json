@@ -1,0 +1,18 @@
+{
+  "jsonc-parser": {
+    "version": "3.3.1",
+    "license": "MIT",
+    "repository": "https://github.com/microsoft/node-jsonc-parser",
+    "tarball": "https://registry.npmjs.org/jsonc-parser/-/jsonc-parser-3.3.1.tgz",
+    "integrity": "sha512-HUgH65KyejrUFPvHFPbqOY0rsFip3Bo5wb4ngvdi1EpCYWUQDC5V+Y7mZws+DLkr4M//zQJoanu1SP+87Dv1oQ==",
+    "contents": "Unmodified CommonJS runtime, package metadata and MIT license. Bundled so --plan needs no dependency installation."
+  },
+  "prettier": {
+    "version": "3.6.2",
+    "license": "MIT",
+    "repository": "https://github.com/prettier/prettier",
+    "tarball": "https://registry.npmjs.org/prettier/-/prettier-3.6.2.tgz",
+    "integrity": "sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==",
+    "contents": "Unmodified standalone ESM runtime, Babel/Estree/Markdown/TypeScript/YAML plugins, package metadata and MIT license. Formats owned runtime files, instruction blocks and changed JSON values without installing dependencies, evaluating project code or reformatting unrelated project text."
+  }
+}

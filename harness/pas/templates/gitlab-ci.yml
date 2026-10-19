@@ -1,0 +1,31 @@
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
+      when: never
+    - if: "$CI_COMMIT_BRANCH"
+
+stages: [verify]
+
+verify:
+  stage: verify
+  image: node:24-trixie
+  variables:
+    HUSKY: "0"
+    NX_DAEMON: "false"
+    npm_config_cache: "$CI_PROJECT_DIR/.npm"
+  cache:
+    key:
+      files: [package-lock.json]
+    paths: [.npm/]
+  before_script:
+    - npm ci --ignore-scripts --no-audit --no-fund
+    - npm rebuild
+    - chown -R node:node "$CI_PROJECT_DIR"
+    - runuser -u node -- npm exec --no -- pas-link-skills
+  script:
+    - runuser -u node -- npm run verify
+  artifacts:
+    when: always
+    expire_in: 30 days
+    paths: [.verify/]

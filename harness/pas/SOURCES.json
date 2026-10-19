@@ -1,0 +1,94 @@
+{
+  "origin": {
+    "repository": "freemarker-template-designer",
+    "commit": "f5e78c23c1b38670e0c0320ceea233f0b3fd4940",
+    "includesUncommittedSkills": true
+  },
+  "files": {
+    "harness/pas/payload/tools/verify.mjs": {
+      "source": "tools/verify.mjs",
+      "sha256": "c02bf0d49a9be95390e055df17a85c26d8329ccbe2a0c87b2880bd6bba5495da"
+    },
+    "harness/pas/payload/eslint.config.mjs": {
+      "source": "eslint.config.mjs",
+      "sha256": "22e14b943362cc2d58c08f6f1bc25e96da472b8c3b68d6482ddace4b6bce96a3"
+    },
+    "harness/pas/payload/tools/typecheck.mjs": {
+      "source": "tools/typecheck.mjs",
+      "sha256": "d94fada9a0bf4b8daced0ce1a6c37b77bf74472c1f89a06db1ec46d9be513b46"
+    },
+    "harness/pas/payload/tools/tracker-lint.mjs": {
+      "source": "tools/tracker-lint.mjs",
+      "sha256": "c2cafceb255964033f8dbc5cfc916775831f712d3f2979fe3960e90cbfa8f163"
+    },
+    "harness/pas/payload/tools/instructions-lint.mjs": {
+      "source": "tools/instructions-lint.mjs",
+      "sha256": "eb9bf6a3b610b75c6f3ff8c1ff1c22503e5fa8774ee4ce46f1e4bb5415cbdc3c"
+    },
+    "harness/pas/payload/tools/expectation-guard.mjs": {
+      "source": "tools/expectation-guard.mjs",
+      "sha256": "3b12fde0c031ec1fbf735deedb1cb7f4b6ecc2e185c07b8e1317123ec76dbd69"
+    },
+    "harness/pas/payload/tools/coverage-ratchet.mjs": {
+      "source": "tools/coverage-ratchet.mjs",
+      "sha256": "41f13a15e1d3a80f9fd59acaa562a88c695bf37fd6808b9e80bbe66a0a3854b9"
+    },
+    "harness/pas/payload/tools/eslint/agent-formatter.cjs": {
+      "source": "tools/eslint/agent-formatter.cjs",
+      "sha256": "bcccec5622b6de6173bdde11700721d97df76dba2bf4a32039a1d6f20d5fb635"
+    },
+    "harness/pas/payload/tools/agent-hooks/lint-edited-file.mjs": {
+      "source": "tools/agent-hooks/lint-edited-file.mjs",
+      "sha256": "f2d261e1ec4c6bcdc35a71a4974ea342d0bf835340a922d6b03854b68ef6fe9b"
+    },
+    "harness/pas/payload/.opencode/plugins/lint-edited-file.ts": {
+      "source": ".opencode/plugins/lint-edited-file.ts",
+      "sha256": "329d0bf3861ecd64c417766dd7740b2bf83fd2a09b7e687334f411b1b2d41abc"
+    },
+    "harness/pas/payload/.husky/pre-commit": {
+      "source": ".husky/pre-commit",
+      "sha256": "e2b7c9733375d7182af2033bda9a7d2a05d0db5eef5be53d26eb7b5f3df8fbc3"
+    },
+    "harness/pas/payload/.husky/commit-msg": {
+      "source": ".husky/commit-msg",
+      "sha256": "463dbceb0683568acc9947a8a5439d185056342597b6b0596a901d20a297e7ce"
+    },
+    "harness/pas/payload/.husky/pre-push": {
+      "source": ".husky/pre-push",
+      "sha256": "53a16fbb3bfbee448da0f1463f7e770a208c9bb36761cb904458b718265f35c8"
+    },
+    "harness/pas/payload/lint-staged.config.mjs": {
+      "source": "lint-staged.config.mjs",
+      "sha256": "b4badbfd14f9cb99cd16275e252d23e7d4a5239751ac861993b3592e96131591"
+    },
+    "harness/pas/payload/commitlint.config.mjs": {
+      "source": "commitlint.config.mjs",
+      "sha256": "240402e716f59bc00a570dd46a2734b7a4c10030c0c27aef602b6123ef34b603"
+    },
+    "skills/grilling/SKILL.md": {
+      "source": ".pas/skills/grilling/SKILL.md",
+      "sha256": "ae4c435d4ab69d001f257117cb278f2d0d3d6d5ec1f163cd9c02c2635afb8a2f"
+    },
+    "skills/improve-codebase-architecture/SKILL.md": {
+      "source": ".pas/skills/improve-codebase-architecture/SKILL.md",
+      "sha256": "2b0b31aae83d94868999f5ff1239bfb1b5c70fe90bbc788093860d044dd0ed66"
+    },
+    "skills/improve-codebase-architecture/HTML-REPORT.md": {
+      "source": ".pas/skills/improve-codebase-architecture/HTML-REPORT.md",
+      "sha256": "6fa44e75f334307d77920e2471fd0b3f621bc9cb5e7ea05a19311fc109589de0"
+    },
+    "skills/pas-spec-driven-development/SKILL.md": {
+      "source": ".pas/skills/pas-spec-driven-development/SKILL.md",
+      "sha256": "612610ac1291c7ff2ef1a3debeb358e892ba60aa177da1ead94652d7fec268a6"
+    },
+    "skills/pas-generate-code/SKILL.md": {
+      "source": ".pas/skills/pas-generate-code/SKILL.md",
+      "sha256": "71d46b82373a54226a24661f62ff07ee4442253c099c32e0d4b876e371f4e812"
+    },
+    "skills/pas-code-review/SKILL.md": {
+      "source": ".pas/skills/pas-code-review/SKILL.md",
+      "sha256": "4a307f5b9ffcb683cab5c79fd6748f88fc379245f9fad5b3b34c1e4a09b8559a"
+    }
+  },
+  "pas-specupdate": "The existing skills/pas-specupdate is canonical. The FreeMarker-local variant is not copied."
+}

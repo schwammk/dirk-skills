@@ -1,0 +1,12 @@
+{
+  "name": "dirk-skills-mermaid-validator",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "dependencies": {
+    "jsdom": "27.4.0",
+    "mermaid": "11.17.2"
+  }
+}

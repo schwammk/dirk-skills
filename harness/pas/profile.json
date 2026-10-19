@@ -1,0 +1,79 @@
+{
+  "name": "pas",
+  "version": 1,
+  "nodeMajor": 24,
+  "baselineSkillSource": "./node_modules/@pas/dev-guidelines",
+  "deniedSkills": [
+    "brainstorming",
+    "writing-plans",
+    "executing-plans",
+    "subagent-driven-development",
+    "test-driven-development",
+    "requesting-code-review"
+  ],
+  "skillSources": [
+    "https://github.com/mattpocock/skills/tree/6fd947921b935b7e1e69293a200400f0fdd5c15f/skills/engineering",
+    "https://github.com/mattpocock/skills/tree/6fd947921b935b7e1e69293a200400f0fdd5c15f/skills/productivity"
+  ],
+  "devDependencies": {
+    "@eslint/js": "9.39.5",
+    "@nx/eslint": "22.7.12",
+    "@nx/eslint-plugin": "22.7.12",
+    "eslint": "9.39.5",
+    "typescript-eslint": "8.71.0",
+    "@commitlint/cli": "21.2.3",
+    "@commitlint/config-conventional": "21.2.3",
+    "husky": "9.1.7",
+    "lint-staged": "17.6.0",
+    "skills": "1.7.2"
+  },
+  "files": [
+    "eslint.config.mjs",
+    "tools/verify.mjs",
+    "tools/typecheck.mjs",
+    "tools/tracker-lint.mjs",
+    "tools/instructions-lint.mjs",
+    "tools/expectation-guard.mjs",
+    "tools/coverage-ratchet.mjs",
+    "tools/eslint/agent-formatter.cjs",
+    "tools/agent-hooks/lint-edited-file.mjs",
+    ".opencode/plugins/lint-edited-file.ts",
+    ".husky/pre-commit",
+    ".husky/commit-msg",
+    ".husky/pre-push",
+    "lint-staged.config.mjs",
+    "commitlint.config.mjs"
+  ],
+  "defaults": {
+    "tools/typecheck-exclude.json": "{}\n",
+    ".pas/skills/.gitkeep": ""
+  },
+  "ignore": {
+    ".gitignore": ["/.verify", "/.npm"],
+    ".prettierignore": [
+      "/.verify",
+      "/.scratch",
+      "/.pas/harness/skills",
+      "/.pas/harness/state.json",
+      "/.agents/skills",
+      "/.claude/skills",
+      "/.junie/skills",
+      "/.opencode/agents",
+      "/.opencode/commands",
+      "/.opencode/skills"
+    ]
+  },
+  "skills": [
+    "arch-cycles",
+    "arch-report-mermaid",
+    "enforcing-quality-gates",
+    "pattern-decision",
+    "pattern-review",
+    "pas-specupdate",
+    "pas-spec-driven-development",
+    "pas-generate-code",
+    "pas-code-review",
+    "grilling",
+    "improve-codebase-architecture"
+  ]
+}
